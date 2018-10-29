@@ -4,6 +4,7 @@
 # Table of Contents  <!-- omit in toc -->
 - [Introduction](#introduction)
 - [Python](#python)
+- [Flask](#flask)
 
 
 # Introduction
@@ -20,6 +21,32 @@ which python3                        => Where is python3? (mine is in /usr/bin/p
 virtualenv -p /usr/bin/python3 venv  => Create the virtual env.
 source venv/bin/activate             => Activate your virtual env
 python3 --version?                   => Python 3.6.6 (in this virtual envinronment).
+pipenv install flask                 => Use pipenv to install packages.
+ls -l Pipfile*                       => List the generated Pipfile(s).
 deactivate                           => Leave the virtual environment.
 ```
+
+And so we finalized our short tour to "Python virtual environment and package management.
+
+# Flask
+
+I decided to use [Flask](http://flask.pocoo.org/) since it is widely-used Python microframework. 
+
+First source the setenv.sh file:
+
+```bash
+source ./setenv.sh
+```
+
+This sets some environment variables that Flask needs. 
+- [Introduction](#introduction)
+- [Python](#python)
+- [Flask](#flask)
+Then run the app:
+
+```bash
+flask run
+```
+
+Open browser in http://localhost:5000 and you should see the index.html file.
 
