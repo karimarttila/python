@@ -39,14 +39,12 @@ source ./setenv.sh
 ```
 
 This sets some environment variables that Flask needs. 
-- [Introduction](#introduction)
-- [Python](#python)
-- [Flask](#flask)
+
 Then run the app:
 
 ```bash
-flask run
+./flask-run.sh
 ```
 
-Open browser in http://localhost:5000 and you should see the index.html file.
+Open browser in http://localhost:4046 and you should see the index.html file.
 

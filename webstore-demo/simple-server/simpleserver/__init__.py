@@ -31,7 +31,7 @@ def create_app(test_config=None):
 
 
     # Apply the blueprints to the app.
-    from simpleserver import server
+    from simpleserver.webserver import server
     app.register_blueprint(server.bp)
 
     # Make url_for('index') == url_for('server.index').
