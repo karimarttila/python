@@ -1,8 +1,5 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
-requires = [
-    'flask',
-]
 
 setup(
     name='simpleserver',
@@ -13,5 +10,13 @@ setup(
     keywords='Python Flask',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=requires
+    install_requires=[
+        'flask',
+    ],
+    extras_require={
+        'test': [
+            'pytest',
+            'coverage'
+        ],
+    },
 )

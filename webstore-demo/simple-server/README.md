@@ -5,6 +5,11 @@
 - [Introduction](#introduction)
 - [Python](#python)
 - [Flask](#flask)
+- [PyCharm](#pycharm)
+- [Python Linting](#python-linting)
+- [Testing](#testing)
+- [Python REPL](#python-repl)
+- [Logging](#logging)
 
 
 # Introduction
@@ -47,4 +52,54 @@ Then run the app:
 ```
 
 Open browser in http://localhost:4046 and you should see the index.html file.
+
+
+# PyCharm
+
+I use [PyCharm](https://www.jetbrains.com/pycharm) for Python programming. PyCharm is really good IDE for Python programming - the editor is great and there are a lot of utilities that make your Python programming more productive (code completion, test runners, automatic linter ([PEP](https://www.python.org/dev/peps/pep-0008/)) etc). 
+
+I use [IntelliJ IDEA](https://www.jetbrains.com/idea/) for Java programming and since PyCharm and IDEA are provided by the same company (JetBrains) they provide very similar look-and-feel. I also use IntelliJ IDEA with [Cursive](https://cursive-ide.com/) plugin for Clojure programming and it also provides very similar look-and-feel. So, there are a lot of synergy benefits to use the same IDE for several programming languages.
+
+
+# Python Linting
+
+[PEP8](https://www.python.org/dev/peps/pep-0008/) provides a definitive style guide for Python programming. PyCharm provides nice automatic linting of Python code related to this style guide.
+
+
+# Testing
+
+Run the tests in console:
+
+```bash
+./run-pytest.sh
+```
+
+The tests are implemented using [pytest](https://docs.pytest.org/en/latest/). Pytest is pretty straightforward to use and PyCharm also provides nice integration to unit tests implemented using pytest (debugger etc.). In PyCharm just create a new pytest configuration and configure it to use your specific pytest file and you are good to go to run that test and the code it calls in your debugger.
+
+
+# Python REPL
+
+Python REPL is one of the best REPLs I have used outside the Lisp world. In the Lisp world REPLs are real REPLs which allow you to experiment with the live system in ways that no other REPL or debugger lets you do in other languages - it's pretty impossible to explain this, you just have to learn some Lisp and try yourself (e.g. [Clojure](https://clojure.org/)). So, now that we have gone through my mandatory Clojure advertisement let's go back to Python REPL. Compared to JShell Java REPL Python wins the fight hands down. Python REPL came with the first version of Python (we just had to wait some 20 years for Java REPL) and because Python is dynamically typed language the REPL is pretty easy to use (compared to Java JShell which is really awkward to use, even with a good IDE). 
+
+PyCharm provides a nice REPL, an example follows:
+
+```python
+ >>> runfile('/mnt/edata/aw/kari/github/python/webstore-demo/simple-server/simpleserver/domaindb/domain.py', wdir='/mnt/edata/aw/kari/github/python/webstore-demo/simple-server')
+>>> myD = Domain()
+2018-10-30 18:40:11,769 - __main__ - __init_product_db - DEBUG - ENTER
+2018-10-30 18:40:11,770 - __main__ - __read_product_groups - DEBUG - ENTER
+...
+2018-10-30 18:40:11,771 - __main__ - __read_raw_products - DEBUG - EXIT
+2018-10-30 18:40:11,771 - __main__ - __init_product_db - DEBUG - EXIT
+>>> myD.get_raw_products(1)
+[['2001', '1', 'Kalevala', '3.95', 'Elias Lönnrot', '1835', 'Finland', 'Finnish'], ...]
+```
+
+So, using the runfile method you are able to reload any module to Python console and then try the methods there in isolation.
+
+# Logging
+
+What a relief Python logging configuration is after Spring hassle. You just create the [logging.conf](TODO) file and that's about it. I created a [SSLogger](TODO) class so that using logging in various python modules would be coherent.
+
+
 

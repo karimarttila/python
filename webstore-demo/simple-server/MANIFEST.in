@@ -1,0 +1,3 @@
+graft simpleserver/templates
+graft tests
+global-exclude *.pyc
