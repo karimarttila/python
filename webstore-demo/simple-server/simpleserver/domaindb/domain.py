@@ -78,27 +78,45 @@ class Domain:
         return self.product_db['product-groups']
 
     def get_raw_products(self, pg_id):
-        """Returns raw products for a product group id."""
+        """Returns raw products for a product group id,
+        or None if product group id not found."""
         self.myLogger.debug(ENTER)
         key = 'pg-' + str(pg_id) + '-raw-products'
+        try:
+            ret = self.product_db[key]
+        except KeyError as e:
+            ret = None
         self.myLogger.debug(EXIT)
-        return self.product_db[key]
+        return ret
 
     def get_products(self, pg_id):
-        """Returns products for a product group id."""
+        """Returns products for a product group id,
+        or None if product group id not found."""
         self.myLogger.debug(ENTER)
         key = 'pg-' + str(pg_id) + '-products'
+        try:
+            ret = self.product_db[key]
+        except KeyError as e:
+            ret = None
         self.myLogger.debug(EXIT)
-        return self.product_db[key]
+        return ret
 
     def get_product(self, pg_id, p_id):
-        """Returns the product of given product group id and product id."""
+        """Returns the product of given product group id and product id
+        or None if product not found."""
         self.myLogger.debug(ENTER)
         key = 'pg-' + str(pg_id) + '-raw-products'
-        raw_products = self.product_db[key]
-        list(filter((lambda x: x[0] == str(p_id)), raw_products))
-
+        try:
+            raw_products = self.product_db[key]
+        except KeyError as e:
+            raw_products = None
+        if not raw_products:
+            ret = None
+        else:
+            product = list(filter((lambda x: x[0] == str(p_id)), raw_products))
+            ret = product[0] if (len(product) > 0) else None
         self.myLogger.debug(EXIT)
+        return ret
 
     def __init__(self):
         self.product_db = self.__init_product_db()

@@ -10,6 +10,8 @@
 - [Testing](#testing)
 - [Python REPL](#python-repl)
 - [Logging](#logging)
+- [Readability](#readability)
+- [Productivity](#productivity)
 
 
 # Introduction
@@ -100,6 +102,14 @@ So, using the runfile method you are able to reload any module to Python console
 # Logging
 
 What a relief Python logging configuration is after Spring hassle. You just create the [logging.conf](TODO) file and that's about it. I created a [SSLogger](TODO) class so that using logging in various python modules would be coherent.
+
+# Readability
+
+Python wins Javascript in readability hands down. It is probably the most readable language there is. I would say that it is even more readable than Clojure which is also very readable language (once you get used to read a functional language). Java also loses to Python in readability just because Java is such a verbose language which really makes readability a major issue.
+
+# Productivity
+
+What a joy it was to program Python after Java. Dynamically typed language! Concise! Clear syntax! Simple! The productivity of Python programming compared to Java is like from another planet - I explored PyCharm new features and Flask the first evening and in the second evening I implemented the domaindb module and most of the userdb module and related unit tests. Also the Python (and especially PyCharm) REPL is the best I have used outside Lisp world. 
 
 
 

@@ -7,7 +7,6 @@ bp = Blueprint('simpleserver', __name__)
 
 myLogger = SSLogger(__name__).get_logger()
 
-
 # noinspection PyUnresolvedReferences
 @bp.route('/')
 def index():
