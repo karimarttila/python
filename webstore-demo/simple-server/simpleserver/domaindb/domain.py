@@ -1,9 +1,13 @@
+import csv
+from typing import Dict, Any
+
 from simpleserver.util.consts import ENTER, EXIT
 from simpleserver.util.logger import SSLogger
-import csv
+
 
 # Run this in Console to refresh module in console:
-# runfile('/mnt/edata/aw/kari/github/python/webstore-demo/simple-server/simpleserver/domaindb/domain.py', wdir='/mnt/edata/aw/kari/github/python/webstore-demo/simple-server')
+# runfile('/mnt/edata/aw/kari/github/python/webstore-demo/simple-server/simpleserver/domaindb/domain.py',
+#     wdir='/mnt/edata/aw/kari/github/python/webstore-demo/simple-server')
 
 class Domain:
     """Domain class."""
@@ -62,7 +66,7 @@ class Domain:
         ret = {}
         product_groups = self.__read_product_groups()
         ret['product-groups'] = product_groups
-        raw_products = self.__read_raw_products()
+        raw_products: Dict[str, Any] = self.__read_raw_products()
         ret.update(raw_products)
         self.myLogger.debug(EXIT)
         return ret

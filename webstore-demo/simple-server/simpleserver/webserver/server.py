@@ -1,13 +1,14 @@
 from flask import Blueprint, render_template, jsonify
+
 from simpleserver.util.consts import ENTER, EXIT
 from simpleserver.util.logger import SSLogger
-
-# TODO: ADD Logger! *******************************************************
 
 bp = Blueprint('simpleserver', __name__)
 
 myLogger = SSLogger(__name__).get_logger()
 
+
+# noinspection PyUnresolvedReferences
 @bp.route('/')
 def index():
     """Show index.html."""
