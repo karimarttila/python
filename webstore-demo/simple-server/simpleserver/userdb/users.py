@@ -39,7 +39,7 @@ class Users:
 
     def __create_counter(self):
         """Creates counter for the module.
-        Also Python closure example."""
+        Also a Python closure example."""
         counter = 3 # Initial value of users.
         def add_one():
             nonlocal counter
@@ -47,16 +47,16 @@ class Users:
             return counter
         return add_one
 
-
     def email_already_exists(self, given_email):
+        """Checks if user email already exists in the user db: exists: True, False otherwise."""
         self.myLogger.debug(ENTER)
         candidates = list(filter((lambda x: x['email'] == given_email), self.users.values()))
         ret = (len(candidates) > 0)
         self.myLogger.debug(EXIT)
         return ret
 
-
     def add_user(self, new_email, first_name, last_name, password):
+        """Adds new user to the user db. ret=ok, if success, ret=failed otherwise."""
         self.myLogger.debug(ENTER)
         if (not self.email_already_exists(new_email)):
             newUser = {}
@@ -75,6 +75,25 @@ class Users:
             ret = {'email': new_email, 'ret': 'failed', 'msg': 'Email already exists'};
         self.myLogger.debug(EXIT)
         return ret
+
+    def check_credentials(self, user_email, user_password):
+        """Checks user credentials in the user db."""
+        self.myLogger.debug(ENTER)
+        ret = False
+        hashed_password = md5(user_password.encode('utf-8')).hexdigest()
+        candidates = list(filter((lambda x: (x['email'] == user_email)
+                                            and (x['hashed_password'] == hashed_password) ), self.users.values()))
+        if (candidates == None):
+            self.myLogger.error("lambda returned None")
+        elif (len(candidates) == 1): # Normal scenario: found one.
+            ret = True
+        elif (len(candidates) == 0): # Normal scenario: found none.
+            pass
+        else:
+            self.myLogger.error("lambda returned something else than 0 or 1 user")
+        self.myLogger.debug(EXIT)
+        return ret
+
 
 
     def __init__(self):

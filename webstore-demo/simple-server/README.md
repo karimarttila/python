@@ -12,6 +12,7 @@
 - [Logging](#logging)
 - [Readability](#readability)
 - [Productivity](#productivity)
+- [Performance](#performance)
 
 
 # Introduction
@@ -109,7 +110,23 @@ Python wins Javascript in readability hands down. It is probably the most readab
 
 # Productivity
 
-What a joy it was to program Python after Java. Dynamically typed language! Concise! Clear syntax! Simple! The productivity of Python programming compared to Java is like from another planet - I explored PyCharm new features and Flask the first evening and in the second evening I implemented the domaindb module and most of the userdb module and related unit tests. Also the Python (and especially PyCharm) REPL is the best I have used outside Lisp world. 
+What a joy it was to program Python after Java. Dynamically typed language! Concise! Clear syntax! Simple! The productivity of Python programming compared to Java is like from another planet - I explored PyCharm new features and Flask the first evening and in the second evening I implemented the domaindb module and most of the userdb module and related unit tests. 
 
+The Python (and especially PyCharm) **REPL** is definitely the best REPL I have used outside Lisp world. 
+
+Using PyCharm debugger is also so stream-lined and fast that if you have even minor issues in your code you tend to add a breakpoint and hit the debugger. This is actually pretty interesting since in the Lisp world you hardly ever use the debugger - you tend to have a live REPL to your system while you add new functionalities to the system. You can't have a live REPL to your Python system in the same sense but PyCharm debugger is a pretty good second option. And when you compare Python debugger to Java debugger - Python is lightning fast to start. Creating Run configurations for your unit tests in PyCharm is also very easy and straightforward. 
+
+In general I think Python must be the most productive language I have ever used. Clojure might win the case in productivity after a couple of years of serious Clojure hacking but Python is unbeatable in the scripting category - you may have months of gaps between your Python hacking sessions but the language is always easy to put in real work regardless how long it was you programmed Python the last time.
+
+If you compare Python to Java Python wins hands down. Java is verbose - Python is concise. Java has long development cycle (edit, compile, build, load to JVM, run) - Python has short development cycle (edit, run). Java has difficult syntax - Python has very easy syntax.
+
+If you compare Python to Javascript/Node, Python wins in clean syntax and overall easyness to create and test code. 
+
+There is nothing inherently bad in Python. I would be cautious to use Python in a big project with tens of developers working in the same code base unless you have some strict rules how to protect collaboration from the typical mistakes using dynamically typed language in a big project (e.g. mandatory use of [type hints](https://docs.python.org/3/library/typing.html)). 
+
+
+# Performance
+
+The [GIL](https://wiki.python.org/moin/GlobalInterpreterLock) might cause some issues if you try to create a system which should be responsive to a large amount of events / sessions. Node is also single-threaded but Node has a special architecture in which Node runs single thread in an event loop and delegates e.g. I/O work to worker pool threads. This makes Node extremely efficient in handling tasks which are not CPU intensive (on the other side CPU intensive tasks may degrade the Node performance quite a lot). Java system on the contrary typically spins a dedicated thread for each request. This is more expensive (consumes more machine resources) but one thread (for one client) does not block processing of another thread (client). Python has the infamous Global Interpreter Lock which has generated a lot of debate in the Python community during Python's lifetime. In most cases this is not a problem since you usually use Python for small tasks. But if you use Python for CPU intensive work handling a huge set of tasks or requests in parallel you have to find some special solutions for it (and those do exists if you google them, see e.g. ["Efficiently Exploiting Multiple Cores with Python"](http://python-notes.curiousefficiency.org/en/latest/python3/multicore_python.html)).
 
 

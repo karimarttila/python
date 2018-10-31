@@ -28,4 +28,12 @@ def test_add_user():
     assert ret['msg'] == 'Email already exists'
     myLogger.debug(EXIT)
 
+def test_check_credentials():
+    myLogger.debug(ENTER)
+    ret = myUsers.check_credentials('kari.karttinen@foo.com', 'Kari')
+    assert ret is True
+    ret = myUsers.check_credentials('kari.karttinen@foo.com', 'WRONG-PASSWORD')
+    assert ret is False
+    myLogger.debug(EXIT)
+
 
