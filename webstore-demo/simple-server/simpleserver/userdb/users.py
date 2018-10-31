@@ -94,8 +94,6 @@ class Users:
         self.myLogger.debug(EXIT)
         return ret
 
-
-
     def __init__(self):
         self.counter = self.__create_counter()
         pass
