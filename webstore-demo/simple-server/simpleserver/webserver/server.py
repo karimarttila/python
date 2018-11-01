@@ -1,10 +1,12 @@
-from flask import Blueprint, render_template, jsonify, request
-from http import HTTPStatus
 from base64 import b64decode
-from simpleserver.util.consts import ENTER, EXIT
-from simpleserver.util.logger import SSLogger
+from http import HTTPStatus
+
+from flask import Blueprint, render_template, jsonify, request
+
 from simpleserver.domaindb.domain import Domain
 from simpleserver.userdb.users import Users
+from simpleserver.util.consts import ENTER, EXIT
+from simpleserver.util.logger import SSLogger
 from simpleserver.webserver.session import Session
 
 bp = Blueprint('simpleserver', __name__)

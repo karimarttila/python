@@ -1,6 +1,8 @@
 from hashlib import md5
+
 from simpleserver.util.consts import ENTER, EXIT
 from simpleserver.util.logger import SSLogger
+
 
 # Run this in Console to refresh module in console:
 # runfile('/mnt/edata/aw/kari/github/python/webstore-demo/simple-server/simpleserver/userdb/users.py',

@@ -1,8 +1,10 @@
+from datetime import datetime, timedelta
+
+import jwt
+
 from simpleserver.util.consts import ENTER, EXIT
 from simpleserver.util.logger import SSLogger
 from simpleserver.util.props import Props
-from datetime import datetime, timedelta
-import jwt
 
 
 class Session:
