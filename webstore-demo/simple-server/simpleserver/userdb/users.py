@@ -50,6 +50,7 @@ class Users:
             nonlocal counter
             counter = counter + 1
             return counter
+
         return add_one
 
     def email_already_exists(self, given_email):
