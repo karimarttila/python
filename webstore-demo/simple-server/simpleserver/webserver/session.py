@@ -19,7 +19,8 @@ class Session:
         # Quick hack testing expired token.
         #exp = datetime.utcnow() + timedelta(seconds=-1)
         myClaim = {'email': user_email, 'exp': exp}
-        ret = jwt.encode(myClaim, 'secret', algorithm='HS256')
+        token = jwt.encode(myClaim, 'secret', algorithm='HS256')
+        ret = token.decode("utf-8")
         self.mySessions.add(ret)
         self.myLogger.debug(EXIT)
         return ret
@@ -33,7 +34,7 @@ class Session:
         ret = None
         # Validation #1:
         if (not token in self.mySessions):
-            self.myLogger.warning('Token not found in my sessions - unknown token: ' + jwt);
+            self.myLogger.warning('Token not found in my sessions - unknown token: ' + token);
         else: # Validation #2:
             try:
                 payload = jwt.decode(token, 'secret', algorithms=['HS256'])
