@@ -1,10 +1,10 @@
-import pytest
 import json
 from base64 import b64encode
 from simpleserver.util.consts import ENTER, EXIT
 from simpleserver.util.logger import SSLogger
 
 myLogger = SSLogger(__name__).get_logger()
+
 
 def test_get_info(client):
     myLogger.debug(ENTER)
@@ -13,6 +13,7 @@ def test_get_info(client):
     assert b"info" in response.data
     assert json_data.get('info') == 'index.html => Info in HTML format'
     myLogger.debug(EXIT)
+
 
 def test_post_signin(client):
     myLogger.debug(ENTER)
@@ -42,6 +43,7 @@ def test_post_signin(client):
     assert response.json['email'] == email
     assert response.json['msg'] == 'Email already exists'
     myLogger.debug(EXIT)
+
 
 def test_post_login(client):
     myLogger.debug(ENTER)
@@ -73,6 +75,7 @@ def test_post_login(client):
     assert response.json['msg'] == 'Credentials are not good - either email or password is not correct'
     myLogger.debug(EXIT)
 
+
 def get_token(client):
     myLogger.debug(ENTER)
     email = 'kari.karttinen@foo.com'
@@ -93,6 +96,7 @@ def get_token(client):
     assert len(response.json['json-web-token']) > 20
     ret = response.json['json-web-token']
     return ret
+
 
 def test_get_product_groups(client):
     myLogger.debug(ENTER)
@@ -115,6 +119,7 @@ def test_get_product_groups(client):
     assert product_groups['2'] == 'Movies'
     myLogger.debug(EXIT)
 
+
 def test_get_products(client):
     myLogger.debug(ENTER)
     token = get_token(client)
@@ -136,6 +141,7 @@ def test_get_products(client):
     # Damn, coincidentally we got a great novel!
     assert products[30][2] == 'Simpauttaja'
     myLogger.debug(EXIT)
+
 
 def test_get_product(client):
     myLogger.debug(ENTER)

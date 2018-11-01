@@ -1,10 +1,10 @@
-import pytest
 from simpleserver.util.consts import ENTER, EXIT
 from simpleserver.util.logger import SSLogger
 from simpleserver.webserver.session import Session
 
 myLogger = SSLogger(__name__).get_logger()
 mySession = Session()
+
 
 def test_json_web_token():
     myLogger.debug(ENTER)

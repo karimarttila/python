@@ -1,4 +1,3 @@
-import pytest
 from simpleserver.util.consts import ENTER, EXIT
 from simpleserver.util.logger import SSLogger
 from simpleserver.userdb.users import Users
@@ -6,13 +5,15 @@ from simpleserver.userdb.users import Users
 myLogger = SSLogger(__name__).get_logger()
 myUsers = Users()
 
+
 def test_email_already_exists():
     myLogger.debug(ENTER)
     found = myUsers.email_already_exists('timo.tillinen@foo.com')
-    assert found == True
+    assert found is True
     found = myUsers.email_already_exists('NOT.FOUND@foo.com')
-    assert found == False
+    assert found is False
     myLogger.debug(EXIT)
+
 
 def test_add_user():
     myLogger.debug(ENTER)
@@ -27,6 +28,7 @@ def test_add_user():
     assert ret['email'] == 'jamppa.jamppanen@foo.com'
     assert ret['msg'] == 'Email already exists'
     myLogger.debug(EXIT)
+
 
 def test_check_credentials():
     myLogger.debug(ENTER)
