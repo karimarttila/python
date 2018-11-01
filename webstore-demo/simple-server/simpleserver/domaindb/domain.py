@@ -84,7 +84,7 @@ class Domain:
         key = 'pg-' + str(pg_id) + '-raw-products'
         try:
             ret = self.product_db[key]
-        except KeyError as e:
+        except KeyError:
             ret = None
         self.myLogger.debug(EXIT)
         return ret
@@ -96,7 +96,7 @@ class Domain:
         key = 'pg-' + str(pg_id) + '-products'
         try:
             ret = self.product_db[key]
-        except KeyError as e:
+        except KeyError:
             ret = None
         self.myLogger.debug(EXIT)
         return ret
@@ -108,7 +108,7 @@ class Domain:
         key = 'pg-' + str(pg_id) + '-raw-products'
         try:
             raw_products = self.product_db[key]
-        except KeyError as e:
+        except KeyError:
             raw_products = None
         if not raw_products:
             ret = None

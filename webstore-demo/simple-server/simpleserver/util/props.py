@@ -1,14 +1,14 @@
 from pathlib import Path
-from simpleserver.util.consts import ENTER, EXIT
 from simpleserver.util.logger import SSLogger
 from configparser import ConfigParser
 import os
+
 
 class Props:
     """Properties class."""
 
     myLogger = SSLogger(__name__).get_logger()
-    SS_PROPERTIES_FILE='resources/simpleserver.properties'
+    SS_PROPERTIES_FILE = 'resources/simpleserver.properties'
 
     def get_property(self, key) -> str:
         """Gets the value for key"""

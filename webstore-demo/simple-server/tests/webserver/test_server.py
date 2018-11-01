@@ -94,7 +94,6 @@ def get_token(client):
     ret = response.json['json-web-token']
     return ret
 
-
 def test_get_product_groups(client):
     myLogger.debug(ENTER)
     token = get_token(client)

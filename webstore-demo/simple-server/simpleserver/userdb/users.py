@@ -6,6 +6,7 @@ from simpleserver.util.logger import SSLogger
 # runfile('/mnt/edata/aw/kari/github/python/webstore-demo/simple-server/simpleserver/userdb/users.py',
 #     wdir='/mnt/edata/aw/kari/github/python/webstore-demo/simple-server')
 
+
 class Users:
     """Users class."""
 
@@ -37,10 +38,12 @@ class Users:
         }
     }
 
-    def __create_counter(self):
+    @staticmethod
+    def __create_counter():
         """Creates counter for the module.
         Also a Python closure example."""
-        counter = 3 # Initial value of users.
+        counter = 3  # Initial value of users.
+
         def add_one():
             nonlocal counter
             counter = counter + 1
@@ -58,21 +61,21 @@ class Users:
     def add_user(self, new_email, first_name, last_name, password):
         """Adds new user to the user db. ret=ok, if success, ret=failed otherwise."""
         self.myLogger.debug(ENTER)
-        if (not self.email_already_exists(new_email)):
-            newUser = {}
-            newId = self.counter()
-            newStrId = str(newId)
-            hashed_password =  md5(password.encode('utf-8')).hexdigest()
-            newUser['userid'] = newStrId
-            newUser['email'] = new_email
-            newUser['first_name'] = first_name
-            newUser['last_name'] = last_name
-            newUser['hashed_password'] = hashed_password
-            self.users[newId] = newUser
+        if not self.email_already_exists(new_email):
+            new_user = {}
+            new_id = self.counter()
+            new_str_id = str(new_id)
+            hashed_password = md5(password.encode('utf-8')).hexdigest()
+            new_user['userid'] = new_str_id
+            new_user['email'] = new_email
+            new_user['first_name'] = first_name
+            new_user['last_name'] = last_name
+            new_user['hashed_password'] = hashed_password
+            self.users[new_id] = new_user
             ret = {'email': new_email, 'ret': 'ok'}
         else:
             self.myLogger.warning('Failure: email already exists: ' + new_email)
-            ret = {'email': new_email, 'ret': 'failed', 'msg': 'Email already exists'};
+            ret = {'email': new_email, 'ret': 'failed', 'msg': 'Email already exists'}
         self.myLogger.debug(EXIT)
         return ret
 
@@ -82,12 +85,12 @@ class Users:
         ret = False
         hashed_password = md5(user_password.encode('utf-8')).hexdigest()
         candidates = list(filter((lambda x: (x['email'] == user_email)
-                                            and (x['hashed_password'] == hashed_password) ), self.users.values()))
-        if (candidates == None):
+                                            and (x['hashed_password'] == hashed_password)), self.users.values()))
+        if candidates is None:
             self.myLogger.error("lambda returned None")
-        elif (len(candidates) == 1): # Normal scenario: found one.
+        elif len(candidates) == 1:  # Normal scenario: found one.
             ret = True
-        elif (len(candidates) == 0): # Normal scenario: found none.
+        elif len(candidates) == 0:  # Normal scenario: found none.
             pass
         else:
             self.myLogger.error("lambda returned something else than 0 or 1 user")
