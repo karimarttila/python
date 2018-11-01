@@ -87,8 +87,8 @@ class Users:
         self.myLogger.debug(ENTER)
         ret = False
         hashed_password = md5(user_password.encode('utf-8')).hexdigest()
-        candidates = list(filter((lambda x: (x['email'] == user_email)
-                                            and (x['hashed_password'] == hashed_password)), self.users.values()))
+        candidates = list(filter((lambda x: (x['email'] == user_email) and (x['hashed_password'] == hashed_password)),
+                                 self.users.values()))
         if candidates is None:
             self.myLogger.error("lambda returned None")
         elif len(candidates) == 1:  # Normal scenario: found one.
