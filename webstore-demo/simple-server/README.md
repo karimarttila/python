@@ -44,6 +44,8 @@ And so we finalized our short tour to "Python virtual environment and package ma
 
 For those who don't know Python land I tell that there are two major versions of Python: 2 and 3 - and they are not compatible. The recommendation is always to use the newer version 3 if possible. 
 
+I also wrote a bit more concise summary in my [Medium blog](https://medium.com/@kari.marttila/java-man-converts-to-python-166578beeb6b) compared to the longer text you can find here in this readme.md.
+
 
 ## Flask
 
