@@ -1,0 +1,6 @@
+Flask==1.0.2
+Flask_Cors==3.0.6
+setuptools==40.5.0
+pytest==3.9.3
+PyJWT==1.6.4
+typing==3.6.6

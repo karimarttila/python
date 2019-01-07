@@ -43,8 +43,10 @@ class Session:
                 ret = {'email': payload['email']}
             except jwt.ExpiredSignatureError:
                 self.myLogger.warning('Signature expired. Please log in again.')
+                # TODO: Remove token from sessions.
             except jwt.InvalidTokenError:
                 self.myLogger.warning('Invalid token. Please log in again.')
+                # TODO: Remove token from sessions.
         self.myLogger.debug(EXIT)
         return ret
 
