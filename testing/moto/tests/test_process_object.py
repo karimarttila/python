@@ -76,7 +76,6 @@ def test_process_object_does_not_exist_scenario(s3_client, bucket_name):
     bucket = bucket_name
     test_file_name = "not-exists1.txt"
     unprocessed_key = f"unprocessed/{test_file_name}"
-    processed_key = f"processed/{test_file_name}"
     # Use our application logic to process the object.
     from bucket.process_object import process_object
     # Test that the processing fails since the object does not exist in the bucket and key.
