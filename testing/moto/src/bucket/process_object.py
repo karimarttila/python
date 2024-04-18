@@ -33,7 +33,7 @@ def _move_object_to_processed(bucket: str, key: str):
     s3_client.delete_object(Bucket=bucket, Key=key)
 
 
-def process_object(bucket, key):
+def process_object(bucket: str, key: str):
     """ Main entry point to the module to process the object in the bucket."""
     if not _check_object(bucket, key):
         raise ValueError(f"Object {key} not found in bucket {bucket}")
